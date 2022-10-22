@@ -1,24 +1,25 @@
 {{#each this.hits}}
-<div class='photo-card'>
-    <img src='{{webformatURL}}' alt='{{tags}}' loading='lazy' width="340" />
-    <ul class='info'>
-        <li class='info-item'>
-            <p class='info-title'>Likes</p>
-            <p class='info-after-title'>{{likes}}</p>
-        </li>
-        <li class='info-item'>
-            <p class='info-title'>Views</p>
-            <p class='info-after-title'>{{views}}</p>
-        </li>
-        <li class='info-item'>
-            <p class='info-title'>Comments</p>
-            <p class='info-title-after'>{{comments}}</p>
-        </li>
-        <li class='info-item'>
-            <p class='info-title'>Downloads</p>
-            <p class='info-after-title'>{{downloads}}</p>
-        </li>
-    </ul>
+    <div class='photo-card'><a href='{{largeImageURL}}' class='gallery-item'>
+        <img src='{{webformatURL}}' alt='{{tags}}' loading='lazy' width="340"/>
+        </a>
+        <ul class='info'>
+            <li class='info-item'>
+                <p class='info-title'>Likes</p>
+                <p class='info-after-title'>{{likes}}</p>
+            </li>
+            <li class='info-item'>
+                <p class='info-title'>Views</p>
+                <p class='info-after-title'>{{views}}</p>
+            </li>
+            <li class='info-item'>
+                <p class='info-title'>Comments</p>
+                <p class='info-title-after'>{{comments}}</p>
+            </li>
+            <li class='info-item'>
+                <p class='info-title'>Downloads</p>
+                <p class='info-after-title'>{{downloads}}</p>
+            </li>
+        </ul>    
+    </div>
 
-</div>
 {{/each}}

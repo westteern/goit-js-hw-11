@@ -16,13 +16,16 @@ function onSubmit(e) {
   const userInput = searhFormRef.elements.searchQuery.value.trim();
   fetchPhotos(userInput).then(totalHits).then(appendMarkup);
 }
+
 function appendMarkup(data) {
-  console.log(data);
   galleryRef.insertAdjacentHTML('beforeend', markupGalleryCard(data));
+  onClickPhotoCard();
 }
+
 function clearGallery() {
   galleryRef.innerHTML = '';
 }
+
 function totalHits(data) {
   if (data.totalHits === 0) {
     return Notify.failure(
@@ -32,4 +35,11 @@ function totalHits(data) {
     Notify.info(`Hooray! We found ${data.totalHits} images.`);
   }
   return data;
+}
+
+function onClickPhotoCard() {
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 }
