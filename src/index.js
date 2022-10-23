@@ -50,6 +50,8 @@ function appendMarkup(data) {
 
 function resetAll() {
   galleryRef.innerHTML = '';
+  pageNumber = 1;
+  // totalPages = 0;
 }
 
 function totalHits(data) {
