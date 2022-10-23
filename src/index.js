@@ -6,6 +6,12 @@ import fetchPhotos from './js/fetchPhotos.js';
 
 import markupGalleryCard from './template/gallery_card.hbs';
 
+const changeSettings = Notify.init({
+  position: 'center-top',
+  distance: '60px',
+  opacity: 0.8,
+});
+
 SmoothScroll({
   stepSize: 175,
   animationTime: 800,
