@@ -7,7 +7,6 @@
   --tansition-timing: 250ms;
 }
 
-
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #fafafa;
@@ -124,7 +123,7 @@ img {
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;  
+  gap: 20px;
 }
 
 .photo-card {
@@ -170,6 +169,11 @@ img {
   letter-spacing: 0.03em;
 }
 
-.info-after {
-  font-weight: 400;     
+.info-after-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+
+  color: rgb(42, 91, 253);
 }
