@@ -124,7 +124,15 @@ img {
 }
 
 .photo-card {
-  width: 277px;  
+  width: 277px;
+  background: rgb(63, 94, 251);
+    background: radial-gradient(circle,
+        rgba(63, 94, 251, 1) 0%,
+        rgba(69, 166, 252, 1) 33%,
+        rgba(69, 170, 252, 1) 35%,
+        rgba(69, 177, 252, 1) 38%,
+        rgba(70, 184, 252, 1) 69%,
+        rgba(69, 164, 252, 1) 100%);
   border: 1px solid rgba(91, 173, 228, 0.72);
   border-radius: 2px;
   transition: box-shadow var(--tansition-timing) var(--animation),
@@ -149,7 +157,14 @@ img {
   padding: 4px 4px;
   width: 100%;
 
-  background-color: #fafafa;
+  background: rgb(63, 94, 251);
+    background: radial-gradient(circle,
+        rgba(63, 94, 251, 1) 0%,
+        rgba(69, 166, 252, 1) 33%,
+        rgba(69, 170, 252, 1) 35%,
+        rgba(69, 177, 252, 1) 38%,
+        rgba(70, 184, 252, 1) 69%,
+        rgba(69, 164, 252, 1) 100%);
 }
 
 .info-item {
@@ -172,5 +187,6 @@ img {
   line-height: 1.4;
   letter-spacing: 0.03em;
 
-  color: rgb(42, 91, 253);
+  color: rgb(232, 253, 42);
 }
+
