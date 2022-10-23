@@ -29,16 +29,15 @@ const options = {
 const observer = new IntersectionObserver(onLoad, options);
 
 let userInput;
-let pageNumber;
-let totalPages;
+let pageNumber = 1;
+let totalPages = 0;
 
 function onSubmit(e) {
   e.preventDefault();
-
+  resetAll();
   userInput = searhFormRef.elements.searchQuery.value.trim();
   if (userInput !== '') {
     fetchPhotos(userInput, pageNumber).then(totalHits).then(appendMarkup);
-    resetAll();
   } else return Notify.failure('Please fill in the input field');
 }
 
@@ -46,12 +45,6 @@ function appendMarkup(data) {
   galleryRef.insertAdjacentHTML('beforeend', markupGalleryCard(data));
   observer.observe(guardRef);
   onClickPhotoCard();
-}
-
-function resetAll() {
-  galleryRef.innerHTML = '';
-  pageNumber = 1;
-  // totalPages = 0;
 }
 
 function totalHits(data) {
@@ -66,16 +59,9 @@ function totalHits(data) {
   return data;
 }
 
-function onClickPhotoCard() {
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-}
-
 function onLoad(entries) {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && totalPages > 0) {
       onLoadMore();
     }
   });
@@ -87,6 +73,7 @@ function onLoadMore() {
       "We're sorry, but you've reached the end of search results."
     );
     observer.unobserve(guardRef);
+    return;
   } else {
     return fetchPhotos(userInput, pageNumber)
       .then(totalPagesCalc)
@@ -94,7 +81,18 @@ function onLoadMore() {
   }
 }
 
+function onClickPhotoCard() {
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+}
 function totalPagesCalc(data) {
   totalPages = Math.ceil(data.totalHits / data.hits.length);
   return data;
+}
+function resetAll() {
+  galleryRef.innerHTML = '';
+  pageNumber = 1;
+  totalPages = 0;
 }
