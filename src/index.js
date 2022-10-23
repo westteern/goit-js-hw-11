@@ -34,21 +34,22 @@ let totalPages;
 
 function onSubmit(e) {
   e.preventDefault();
-  resetAll();
+
   userInput = searhFormRef.elements.searchQuery.value.trim();
-  observer.observe(guardRef);
-  fetchPhotos(userInput, pageNumber).then(totalHits).then(appendMarkup);
+  if (userInput !== '') {
+    fetchPhotos(userInput, pageNumber).then(totalHits).then(appendMarkup);
+    resetAll();
+  } else return Notify.failure('Please fill in the input field');
 }
 
 function appendMarkup(data) {
   galleryRef.insertAdjacentHTML('beforeend', markupGalleryCard(data));
+  observer.observe(guardRef);
   onClickPhotoCard();
 }
 
 function resetAll() {
   galleryRef.innerHTML = '';
-  pageNumber = 1;
-  totalPages = 0;
 }
 
 function totalHits(data) {
@@ -79,7 +80,7 @@ function onLoad(entries) {
 }
 function onLoadMore() {
   pageNumber += 1;
-  if (pageNumber === totalPages) {
+  if (pageNumber >= totalPages) {
     Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
