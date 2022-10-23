@@ -1,9 +1,19 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SmoothScroll from 'smoothscroll-for-websites';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import fetchPhotos from './js/fetchPhotos.js';
 
 import markupGalleryCard from './template/gallery_card.hbs';
+
+SmoothScroll({
+  stepSize: 175,
+  animationTime: 800,
+  accelerationDelta: 200,
+  accelerationMax: 6,
+  keyboardSupport: true,
+  arrowScroll: 100,
+});
 
 const searhFormRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('.gallery');
@@ -13,7 +23,7 @@ searhFormRef.addEventListener('submit', onSubmit);
 
 const options = {
   root: null,
-  rootMargin: '100px',
+  rootMargin: '300px',
   threshold: 1,
 };
 const observer = new IntersectionObserver(onLoad, options);
@@ -26,12 +36,12 @@ function onSubmit(e) {
   e.preventDefault();
   resetAll();
   userInput = searhFormRef.elements.searchQuery.value.trim();
+  observer.observe(guardRef);
   fetchPhotos(userInput, pageNumber).then(totalHits).then(appendMarkup);
 }
 
 function appendMarkup(data) {
   galleryRef.insertAdjacentHTML('beforeend', markupGalleryCard(data));
-  observer.observe(guardRef);
   onClickPhotoCard();
 }
 
@@ -39,7 +49,6 @@ function resetAll() {
   galleryRef.innerHTML = '';
   pageNumber = 1;
   totalPages = 0;
-  observer.unobserve(guardRef);
 }
 
 function totalHits(data) {
@@ -70,7 +79,7 @@ function onLoad(entries) {
 }
 function onLoadMore() {
   pageNumber += 1;
-  if (pageNumber > totalPages) {
+  if (pageNumber === totalPages) {
     Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
