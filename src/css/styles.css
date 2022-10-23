@@ -119,8 +119,14 @@ img {
 
 .gallery {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+
+  gap: 24px;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .photo-card {
@@ -137,8 +143,9 @@ img {
   border-radius: 2px;
   transition: box-shadow var(--tansition-timing) var(--animation),
     transform var(--tansition-timing) var(--animation);
-  cursor: pointer;
+  cursor: pointer;  
 }
+
 .photo-card:hover {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transform: scale(1.1);
