@@ -6,6 +6,18 @@
   --animation: cubic-bezier(0.4, 0, 0.2, 1);
   --tansition-timing: 250ms;
 }
+.visualy-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -103,7 +115,7 @@ img {
 
 .container {
   position: relative;
-  top: 60px;
+  top: 70px;
   max-width: 1200px;
   
 
@@ -159,9 +171,9 @@ img {
 
 .info {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 5px;
-  padding: 4px 4px;
+  padding-top: 5px;
   width: 100%;
 
   background: rgb(63, 94, 251);
@@ -175,14 +187,16 @@ img {
 }
 
 .info-item {
-  display: flex;
+  display: flex;  
+  align-items: center;  
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+ 
 }
   
 
 .info-title {
-  font-weight: 700;
+  font-weight: 00;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: 0.03em;
@@ -194,6 +208,10 @@ img {
   line-height: 1.4;
   letter-spacing: 0.03em;
 
-  color: rgb(232, 253, 42);
+  color: rgb(253, 255, 152);
 }
-
+.icon {
+  width: 15px;
+  height: 15px;
+  fill: rgb(253, 255, 152);
+}
