@@ -104,7 +104,7 @@ img {
 .container {
   position: relative;
   top: 60px;
-  width: 1200px;
+  max-width: 1200px;
   
 
   margin-left: auto;
